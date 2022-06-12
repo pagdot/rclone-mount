@@ -4,7 +4,7 @@ RUN apk --no-cache add wget unzip
 
 ARG TARGETPLATFORM
 
-ARG VERSION=v1.55.1
+ARG VERSION=v1.58.1
 
 RUN echo Building for target ${TARGETPLATFORM}
 
