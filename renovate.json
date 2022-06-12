@@ -5,7 +5,7 @@
   "regexManagers": [
     {
       "fileMatch": ["^Dockerfile$"],
-      "matchStrings": ["ARG RCLONE_VERSION=(?<currentValue>.*?)\\n"],
+      "matchStrings": ["ARG VERSION=(?<currentValue>.*?)\\n"],
       "depNameTemplate": "rclone/rclone",
       "datasourceTemplate": "github-releases"
     }
