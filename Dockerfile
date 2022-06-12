@@ -1,4 +1,4 @@
-FROM lsiobase/alpine:3.11 AS downloader
+FROM lsiobase/alpine:3.16 AS downloader
 
 RUN apk --no-cache add wget unzip
 
@@ -15,7 +15,7 @@ RUN case ${TARGETPLATFORM} in "linux/amd64") ARCH=amd64;; "linux/arm/v7") ARCH=a
 
 RUN /rclone version
 
-FROM lsiobase/alpine:3.14
+FROM lsiobase/alpine:3.16
 
 RUN apk add --no-cache gettext fuse
 
