@@ -10,5 +10,11 @@
       "datasourceTemplate": "github-releases",
       "automerge": true,
     }
+  ],
+  "packageRules": [
+    {
+      "packageNames": ["rclone/rclone"],
+      "automerge": true,
+    }
   ]
 }
