@@ -8,7 +8,6 @@
       "matchStrings": ["ARG VERSION=(?<currentValue>.*?)\\n"],
       "depNameTemplate": "rclone/rclone",
       "datasourceTemplate": "github-releases",
-      "automerge": true,
     }
   ],
   "packageRules": [
