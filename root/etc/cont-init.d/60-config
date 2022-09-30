@@ -5,6 +5,8 @@ cp /config/rclone.conf /tmp/rclone.conf
 chown $PUID:$PGID /tmp/rclone.conf
 chmod +rw /tmp/rclone.conf
 
+chown -R $PUID:$PGID /cache
+
 while read -r l; do
   echo "Processing line: $l"
 
