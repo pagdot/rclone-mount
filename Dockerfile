@@ -17,11 +17,13 @@ RUN /rclone version
 
 FROM lsiobase/alpine:3.16
 
-RUN apk add --no-cache gettext fuse
+RUN apk add --no-cache gettext fuse && \
+   sed -i 's/#user_allow_other/user_allow_other/' /etc/fuse.conf && \
+   mkdir /cache
 
-RUN sed -i 's/#user_allow_other/user_allow_other/' /etc/fuse.conf
+ENV RCLONE_CACHE_DIR=/cache
 
-VOLUME /config
+VOLUME /config /cache
 
 COPY --from=downloader /rclone /usr/local/bin/
 
