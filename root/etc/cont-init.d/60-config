@@ -2,7 +2,8 @@
 
 # Copy config to new location so it can be mounted read-only
 cp /config/rclone.conf /tmp/rclone.conf
-chown abc:abc /tmp/rclone.conf
+chown $PUID:$PGID /tmp/rclone.conf
+chmod +rw /tmp/rclone.conf
 
 while read -r l; do
   echo "Processing line: $l"
@@ -13,7 +14,7 @@ while read -r l; do
 
   remote_name=${MAPFILE[0]}
   mount_point=/mnt/${MAPFILE[1]}
-  params=("${MAPFILE[@]:2}")
+  params="${MAPFILE[@]:2}"
 
   service_name=$(echo "$remote_name" | base64)
   mkdir -p "/etc/services.d/$service_name/"
