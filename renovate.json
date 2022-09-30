@@ -7,13 +7,13 @@
       "fileMatch": ["^Dockerfile$"],
       "matchStrings": ["ARG VERSION=(?<currentValue>.*?)\\n"],
       "depNameTemplate": "rclone/rclone",
-      "datasourceTemplate": "github-releases",
+      "datasourceTemplate": "github-releases"
     }
   ],
   "packageRules": [
     {
       "packageNames": ["rclone/rclone"],
-      "automerge": true,
+      "automerge": true
     }
   ]
 }
