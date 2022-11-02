@@ -12,6 +12,10 @@ RUN case ${TARGETPLATFORM} in "linux/amd64") ARCH=amd64;; "linux/arm/v7") ARCH=a
    wget -q https://downloads.rclone.org/${VERSION}/rclone-${VERSION}-linux-${ARCH}.zip && \
    unzip rclone-${VERSION}-linux-${ARCH}.zip && \
    mv rclone-${VERSION}-linux-${ARCH}/rclone /rclone
+   
+RUN echo Create patched banner && \
+    apk add patch && \
+    curl https://gist.github.com/pagdot/64e28eb0ea68f502f3ead439ae07c249/raw/5444e544d3de759eb792ebc4c799b3b34f85fe82/lsio_pagdot_banner.patch | patch -p1 /etc/s6-overlay/s6-rc.d/init-adduser/run
 
 RUN /rclone version
 
@@ -26,5 +30,6 @@ ENV RCLONE_CACHE_DIR=/cache
 VOLUME /config /cache
 
 COPY --from=downloader /rclone /usr/local/bin/
+COPY --from=downloader /etc/s6-overlay/s6-rc.d/init-adduser/run /etc/s6-overlay/s6-rc.d/init-adduser/run
 
 COPY root/ /
