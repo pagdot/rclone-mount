@@ -1,6 +1,6 @@
 # Docker rclone mount
 
-![](https://github.com/RealOrangeOne/docker-rclone-mount/workflows/CI/badge.svg)
+![](https://github.com/pagdot/rclone-mount/workflows/CI/badge.svg)
 
 Docker container to manage mounting remote storage using [rclone](https://rclone.org/) via FUSE.
 
