@@ -19,7 +19,8 @@ FROM lsiobase/alpine:3.16
 
 RUN apk add --no-cache gettext fuse && \
    sed -i 's/#user_allow_other/user_allow_other/' /etc/fuse.conf && \
-   mkdir /cache
+   mkdir /cache && \
+   curl https://gist.github.com/pagdot/64e28eb0ea68f502f3ead439ae07c249/raw/5444e544d3de759eb792ebc4c799b3b34f85fe82/lsio_pagdot_banner.patch | patch -p1 /etc/s6-overlay/s6-rc.d/init-adduser/run
 
 ENV RCLONE_CACHE_DIR=/cache
 
