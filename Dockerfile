@@ -1,4 +1,4 @@
-FROM lsiobase/alpine:3.16 AS downloader
+FROM lsiobase/alpine:3.17 AS downloader
 
 RUN apk --no-cache add wget unzip
 
@@ -19,7 +19,7 @@ RUN echo Create patched banner && \
 
 RUN /rclone version
 
-FROM lsiobase/alpine:3.16
+FROM lsiobase/alpine:3.17
 
 RUN apk add --no-cache gettext fuse && \
    sed -i 's/#user_allow_other/user_allow_other/' /etc/fuse.conf && \
