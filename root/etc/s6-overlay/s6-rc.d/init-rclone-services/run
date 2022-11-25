@@ -19,10 +19,12 @@ while read -r l; do
   params="${MAPFILE[@]:2}"
 
   service_name=$(echo "$remote_name" | base64)
-  mkdir -p "/etc/services.d/$service_name/"
+  mkdir -p "/root/etc/s6-overlay/s6-rc.d/rclone-$service_name/dependencies.d"
   export mount_point remote_name params
-  envsubst < /etc/defaults/run.sh > "/etc/services.d/$service_name/run"
-  chmod +x "/etc/services.d/$service_name/run"
+  envsubst < /etc/defaults/run.sh > "/root/etc/s6-overlay/s6-rc.d/rclone-$service_name/run"
+  chmod +x "/root/etc/s6-overlay/s6-rc.d/rclone-$service_name/run"
+  touch  "/root/etc/s6-overlay/s6-rc.d/rclone-$service_name/dependencies.d/init-services"
+  echo "longrun" > "/root/etc/s6-overlay/s6-rc.d/rclone-$service_name/type"
 done </config/config.txt
 
 echo "Done."
