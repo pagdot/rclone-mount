@@ -1,5 +1,7 @@
 #!/usr/bin/with-contenv bash
 
+echo Reading config file and creating service definitions
+
 # Copy config to new location so it can be mounted read-only
 cp /config/rclone.conf /tmp/rclone.conf
 chown $PUID:$PGID /tmp/rclone.conf
